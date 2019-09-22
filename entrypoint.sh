@@ -36,7 +36,7 @@ else
   git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
   git rm -rf *
   cd "$GITHUB_WORKSPACE"
-  cp -rf "$INPUT_SOURCE" ./../gittemp
+  cp -rf "$INPUT_SOURCE"/. ./../gittemp
   cd ./../gittemp
   git add *
   git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
