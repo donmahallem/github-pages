@@ -14,4 +14,11 @@ jobs:
         with:
           source: ./docs
           target: gh-pages
-          force-push: false
+          force_push: false
+      - name: No Filter
+        id: check1
+        uses: ./
+        with:
+          source: ./docs
+          target: gh-pages
+          force_push: true

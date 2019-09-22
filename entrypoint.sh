@@ -11,3 +11,9 @@ if [ -z "$INPUT_TARGET" ]; then
 fi
 
 echo "Deploying $INPUT_SOURCE directory to $INPUT_TARGET branch. (Force: $INPUT_FORCE_PUSH)"
+
+if [ "$INPUT_FORCE_PUSH "]; then
+  echo "A"
+else
+  echo "B"
+fi
