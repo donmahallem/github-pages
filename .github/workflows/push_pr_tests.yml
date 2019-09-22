@@ -9,18 +9,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: No Filter
-        id: check1
-        uses: ./
-        with:
-          source: ./docs
-          target: gh-pages
-          force_push: false
-      - name: No Filter
         id: check2
         uses: ./
         with:
           source: ./docs
           target: gh-pages
           force_push: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: No Filter
+        id: check1
+        uses: ./
+        with:
+          source: ./docs
+          target: gh-pages
+          force_push: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
