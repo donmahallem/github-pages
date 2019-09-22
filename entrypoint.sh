@@ -24,9 +24,25 @@ if [ "$INPUT_FORCE_PUSH" = true ]; then
   git push --force --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git master:${INPUT_TARGET}
   rm -rf .git
 
-  cd "$GITHUB_WORKSPACE"
 else
-  echo "B"
+  echo "Commiting with force push"
+  cd "$GITHUB_WORKSPACE/.."
+  mkdir gittemp
+  cd gittemp
+  git clone https://github.com/${GITHUB_REPOSITORY}.git .
+  git checkout ${INPUT_TARGET}
+  echo "Commiting as ${GITHUB_ACTOR}(${GITHUB_ACTOR}@users.noreply.github.com)"
+  git config user.name "${GITHUB_ACTOR}"
+  git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+  git rm -rf *
+  cd "$GITHUB_WORKSPACE"
+  cp -rf "$INPUT_SOURCE" ./../gittemp
+  cd ./../gittemp
+  git add *
+  git commit --allow-empty -m 'Github Pages Deployment' -m "Date ${date}"
+  git push --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git master:${INPUT_TARGET}
+  rm -rf .git
 fi
 
+cd "$GITHUB_WORKSPACE"
 echo "Done"
