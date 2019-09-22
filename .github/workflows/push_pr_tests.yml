@@ -22,3 +22,5 @@ jobs:
           source: ./docs
           target: gh-pages
           force_push: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
