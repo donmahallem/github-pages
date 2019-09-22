@@ -38,7 +38,7 @@ else
   git rm -rf *
   cd "$GITHUB_WORKSPACE"
   cd "$INPUT_SOURCE"
-  cp -rf . "$GITHUB_WORKSPACE"/../gittemp
+  cp -rf . "${GITHUB_WORKSPACE}/../gittemp"
   cd ./../gittemp
   git add *
   git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
