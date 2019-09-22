@@ -10,6 +10,12 @@ if [ -z "$INPUT_TARGET" ]; then
   exit 1
 fi
 
+
+if [ -z "$INPUT_DEPLOY_KEY" ]; then
+  echo "Key not defined"
+  exit 1
+fi
+
 echo "Deploying $INPUT_SOURCE directory to $INPUT_TARGET branch. (Force: $INPUT_FORCE_PUSH)"
 
 if [ "$INPUT_FORCE_PUSH" = true ]; then
@@ -49,6 +55,6 @@ else
 fi
 
 cd "$GITHUB_WORKSPACE"
-curl -XPOST -H"Authorization: token ${INPUT_DEPLOY_KEY}" -H"Accept: application/vnd.github.mister-fantastic-preview+json" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds
+curl -XPOST -H "Authorization: token ${INPUT_DEPLOY_KEY}" -H "Accept: application/vnd.github.mister-fantastic-preview+json" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds
 
 echo "Done"
