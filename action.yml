@@ -1,0 +1,24 @@
+# action.yml
+name: 'Github Pages Release Action'
+description: 'Helper to generate Github Pages '
+author: DonMahallem
+inputs:
+  source:  # id of input
+    description: 'Folder to push to pages'
+    required: true
+    default: ''
+  target:
+    description: 'Target branch'
+    required: false
+    default: 'gh-pages'
+  force_push:
+    description: 'Force push commit'
+    required: false
+    default: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source }}
+    - ${{ inputs.target }}
+    - ${{ inputs.force-push }}
