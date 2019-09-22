@@ -31,12 +31,13 @@ else
   cd gittemp
   git clone https://github.com/${GITHUB_REPOSITORY}.git .
   git checkout ${INPUT_TARGET}
+  git pull origin
   echo "Commiting as ${GITHUB_ACTOR}(${GITHUB_ACTOR}@users.noreply.github.com)"
   git config user.name "${GITHUB_ACTOR}"
   git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
   git rm -rf *
   cd "$GITHUB_WORKSPACE"
-  cp -rf "$INPUT_SOURCE"/. ./../gittemp
+  cp -rf "$INPUT_SOURCE"/ ./../gittemp
   cd ./../gittemp
   git add *
   git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
