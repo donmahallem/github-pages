@@ -44,7 +44,7 @@ else
   find .
   git add *
   git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
-  git push --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git master:${INPUT_TARGET}
+  git push --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git ${INPUT_TARGET}:${INPUT_TARGET}
   rm -rf .git
 fi
 
