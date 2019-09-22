@@ -49,4 +49,6 @@ else
 fi
 
 cd "$GITHUB_WORKSPACE"
+curl -XPOST -H"Authorization: token ${INPUT_DEPLOY_KEY}" -H"Accept: application/vnd.github.mister-fantastic-preview+json" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds
+
 echo "Done"

@@ -7,6 +7,10 @@ inputs:
     description: 'Folder to push to pages'
     required: true
     default: ''
+  deploy_key:  # id of input
+    description: 'Folder to push to pages'
+    required: true
+    default: ''
   target:
     description: 'Target branch'
     required: false
