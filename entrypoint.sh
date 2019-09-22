@@ -15,6 +15,7 @@ echo "Deploying $INPUT_SOURCE directory to $INPUT_TARGET branch. (Force: $INPUT_
 if [ "$INPUT_FORCE_PUSH" = true ]; then
   echo "Commiting with force push"
   cd "$INPUT_SOURCE"
+  echo "Commiting as ${GITHUB_ACTOR}(${GITHUB_ACTOR}@users.noreply.github.com)"
   git init
   git config user.name "${GITHUB_ACTOR}"
   git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
