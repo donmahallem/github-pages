@@ -38,6 +38,7 @@ else
   git rm -rf *
   cd "$GITHUB_WORKSPACE"
   cd "$INPUT_SOURCE"
+  echo "Copy ${INPUT_SOURCE} to ${GITHUB_WORKSPACE}/../gittemp"
   cp -rf . "${GITHUB_WORKSPACE}/../gittemp"
   cd ./../gittemp
   git add *
