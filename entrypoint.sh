@@ -12,7 +12,7 @@ fi
 
 echo "Deploying $INPUT_SOURCE directory to $INPUT_TARGET branch. (Force: $INPUT_FORCE_PUSH)"
 
-if [ "$INPUT_FORCE_PUSH "]; then
+if [ "$INPUT_FORCE_PUSH " = true ]; then
   echo "A"
 else
   echo "B"
