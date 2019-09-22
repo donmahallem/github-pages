@@ -41,7 +41,6 @@ else
   echo "Copy ${INPUT_SOURCE} to ${GITHUB_WORKSPACE}/../gittemp"
   cp -rf . "${GITHUB_WORKSPACE}/../gittemp"
   cd "${GITHUB_WORKSPACE}/../gittemp"
-  find .
   git add *
   git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
   git push --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git ${INPUT_TARGET}:${INPUT_TARGET}
