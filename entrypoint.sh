@@ -20,7 +20,7 @@ if [ "$INPUT_FORCE_PUSH" = true ]; then
   git config user.name "${GITHUB_ACTOR}"
   git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
   git add *
-  git commit --allow-empty -m 'Github Pages Deployment' -m "Date ${date}"
+  git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
   git push --force --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git master:${INPUT_TARGET}
   rm -rf .git
 
@@ -39,7 +39,7 @@ else
   cp -rf "$INPUT_SOURCE" ./../gittemp
   cd ./../gittemp
   git add *
-  git commit --allow-empty -m 'Github Pages Deployment' -m "Date ${date}"
+  git commit --allow-empty -m 'Github Pages Deployment' -m "Date $(date)"
   git push --quiet https://"x-access-token:$GITHUB_TOKEN"@github.com/${GITHUB_REPOSITORY}.git master:${INPUT_TARGET}
   rm -rf .git
 fi
