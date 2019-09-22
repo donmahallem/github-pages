@@ -16,7 +16,7 @@ jobs:
           target: gh-pages
           force_push: false
       - name: No Filter
-        id: check1
+        id: check2
         uses: ./
         with:
           source: ./docs
