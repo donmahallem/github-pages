@@ -7,10 +7,18 @@ inputs:
     description: 'Folder to push to pages'
     required: true
     default: ''
-  deploy_key:  # id of input
-    description: 'Folder to push to pages'
+  github_token:  # id of input
+    description: 'The Github Token'
     required: true
     default: ''
+  deploy_key:
+    description: 'Repositories Deploy Key to be used'
+    required: false
+    default: false
+  pat:
+    description: 'Personal access token'
+    required: false
+    default: false
   target:
     description: 'Target branch'
     required: false

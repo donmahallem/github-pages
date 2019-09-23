@@ -8,17 +8,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: No Filter
+      - name: Push without page build
         id: check2
         uses: ./
         with:
           source: ./docs
           target: gh-pages
           force_push: true
-          deploy_key: ${{ secrets.deploy_key }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: No Filter
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push with pat key
+        id: check2
+        uses: ./
+        with:
+          source: ./docs
+          target: gh-pages
+          force_push: false
+          pat: ${{ secrets.deploy_key }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push with deploy key
         id: check1
         uses: ./
         with:
@@ -26,5 +33,4 @@ jobs:
           target: gh-pages
           force_push: false
           deploy_key: ${{ secrets.deploy_key }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
