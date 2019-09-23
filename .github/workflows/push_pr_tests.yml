@@ -1,0 +1,36 @@
+name: Test push job
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Push without page build
+        id: check1
+        uses: ./
+        with:
+          source: ./docs
+          target: gh-pages
+          force_push: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push with pat key
+        id: check2
+        uses: ./
+        with:
+          source: ./docs
+          target: gh-pages
+          force_push: false
+          pat: ${{ secrets.deploy_key }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push with deploy key
+        id: check3
+        uses: ./
+        with:
+          source: ./docs
+          target: gh-pages
+          force_push: false
+          deploy_key: ${{ secrets.deploy_key }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
