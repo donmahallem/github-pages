@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Push without page build
-        id: check2
+        id: check1
         uses: ./
         with:
           source: ./docs
@@ -26,7 +26,7 @@ jobs:
           pat: ${{ secrets.deploy_key }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Push with deploy key
-        id: check1
+        id: check3
         uses: ./
         with:
           source: ./docs
